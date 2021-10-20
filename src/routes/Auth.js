@@ -43,7 +43,7 @@ const Auth = props => {
           value={password}
           onChange={onChange}
         />
-        <input type="submit" value={newAccount ? "Create Account" : "Log In"} />
+        <input type="submit" value={newAccount ? "Create Accountdd" : "Log In"} />
       </form>
       <div>
         <button>Continue with Google</button>
