@@ -10,18 +10,21 @@ const Auth = props => {
       target: { name, value },
     } = e;
 
-    console.log(target);
-    console.log(target.name);
-    console.log(target.value);
+    if (name === "email") {
+      setEmail(value);
+    } else if (name === "password") {
+      setPassword(value);
+    }
   };
 
   const onSubmit = e => {
     e.preventDefault();
+    console.log(email, password);
   };
 
   return (
     <div>
-      <form>
+      <form onSubmit={onSubmit}>
         <input
           name="email"
           type="text"
