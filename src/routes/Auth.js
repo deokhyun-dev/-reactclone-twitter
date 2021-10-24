@@ -1,11 +1,12 @@
 /* eslint-disable */
 
 import React, { useState } from "react";
+import { authService } from "../fbase";
 
 const Auth = props => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const  [newAccount, setNewAccount] = useState(false)
+  const [newAccount, setNewAccount] = useState(true);
 
   const onChange = e => {
     const {
@@ -19,9 +20,18 @@ const Auth = props => {
     }
   };
 
-  const onSubmit = e => {
+  const onSubmit = async e => {
     e.preventDefault();
-    console.log(email, password);
+    let data;
+    if (newAccount) {
+      // create account
+      data = await authService.createUserWithEmailAndPassword(email, password);
+      console.log(data);
+    } else {
+      // log in
+      data = await authService.signInWithEmailAndPassword(email, password);
+      console.log(data);
+    }
   };
 
   return (
@@ -43,7 +53,10 @@ const Auth = props => {
           value={password}
           onChange={onChange}
         />
-        <input type="submit" value={newAccount ? "Create Accountdd" : "Log In"} />
+        <input
+          type="submit"
+          value={newAccount ? "Create Accountdd" : "Log In"}
+        />
       </form>
       <div>
         <button>Continue with Google</button>
