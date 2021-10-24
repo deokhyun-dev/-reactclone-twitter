@@ -49,19 +49,16 @@ const Auth = props => {
     const {
       target: { name },
     } = event;
-    let data;
-    let provider = new firebaseInstance.auth.GoogleAuthProvider();
-    data = authService.signInWithPopup(provider);
+    let provider;
+    console.log(name);
+
+    if (name === "google") {
+      provider = new firebaseInstance.auth.GoogleAuthProvider();
+    } else if (name === "github") {
+      provider = new firebaseInstance.auth.GithubAuthProvider();
+    }
+    const data = await authService.signInWithPopup(provider);
     console.log(data);
-    // if (name === "google") {
-    //   data = await authService.signInWithPopup(
-    //     new firebaseInstance.auth.GoogleAuthProvider()
-    //   );
-    // } else if (name === "github") {
-    //   data = await authService.signInWithPopup(
-    //     new firebaseInstance.auth.GithubAuthProvider()
-    //   );
-    // }
   };
 
   return (
