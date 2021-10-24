@@ -10,7 +10,7 @@
 
 # production
 /build
-/fbase.js
+/src/fbase.js
 
 # misc
 .DS_Store
