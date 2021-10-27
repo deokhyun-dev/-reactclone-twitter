@@ -8,9 +8,9 @@ import Home from "../routes/Home";
 import Navigation from "./Navigation";
 import Profile from "./Profile";
 
-const AppRouter = props => {
+const AppRouter = (props) => {
   console.log(props);
-  const { isLoggedIn } = props;
+  const { isLoggedIn, userObj } = props;
   return (
     <Router>
       {isLoggedIn && <Navigation />}
@@ -18,7 +18,7 @@ const AppRouter = props => {
         {isLoggedIn ? (
           <>
             <Route exact patch="/">
-              <Home />
+              <Home userObj={userObj} />
             </Route>
             <Route exact patch="/profile">
               <Profile />
