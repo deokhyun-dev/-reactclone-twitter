@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { dbService } from "fbase";
+import Tweet from "components/Tweet";
 
 const Home = ({ userObj }) => {
+  console.log(userObj);
   const [tweet, setTweet] = useState("");
   const [tweets, setTweets] = useState([]);
 
@@ -48,9 +50,11 @@ const Home = ({ userObj }) => {
       <div>
         {tweets.map((t, idx) => {
           return (
-            <div key={t.id}>
-              <h4>{t.text}</h4>
-            </div>
+            <Tweet
+              key={t.id}
+              tweetObj={t}
+              isOwner={t.creatorId === userObj.uid ? true : false}
+            />
           );
         })}
       </div>
