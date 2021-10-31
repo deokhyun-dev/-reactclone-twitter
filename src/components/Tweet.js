@@ -18,7 +18,6 @@ const Tweet = ({ tweetObj, isOwner }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(tweetObj, newTweet);
     await dbService.doc(`tweets/${tweetObj.id}`).update({ text: newTweet });
     setEditing(false);
   };
@@ -29,8 +28,6 @@ const Tweet = ({ tweetObj, isOwner }) => {
     } = e;
     setNewTweet(value);
   };
-
-  console.log(tweetObj);
 
   return (
     <>

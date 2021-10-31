@@ -9,7 +9,6 @@ import Navigation from "./Navigation";
 import Profile from "./Profile";
 
 const AppRouter = (props) => {
-  console.log(props);
   const { isLoggedIn, userObj, refreshUser } = props;
   return (
     <Router>

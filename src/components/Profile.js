@@ -12,6 +12,7 @@ const Profile = (props) => {
   const onLogOutClick = () => {
     authService.signOut();
     history.replace("/");
+    refreshUser();
   };
 
   const getMyTweets = async () => {
