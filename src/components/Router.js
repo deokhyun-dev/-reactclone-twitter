@@ -10,10 +10,10 @@ import Profile from "./Profile";
 
 const AppRouter = (props) => {
   console.log(props);
-  const { isLoggedIn, userObj } = props;
+  const { isLoggedIn, userObj, refreshUser } = props;
   return (
     <Router>
-      {isLoggedIn && <Navigation />}
+      {isLoggedIn && <Navigation userObj={userObj} />}
       <Switch>
         {isLoggedIn ? (
           <>
@@ -21,7 +21,7 @@ const AppRouter = (props) => {
               <Home userObj={userObj} />
             </Route>
             <Route exact path="/profile">
-              <Profile userObj={userObj} />
+              <Profile userObj={userObj} refreshUser={refreshUser} />
             </Route>
           </>
         ) : (
